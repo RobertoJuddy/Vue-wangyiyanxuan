@@ -1,27 +1,34 @@
 <template>
   <div class="project">
     <ul class="projectList">
-      <li>
-        <img src="https://yanxuan.nosdn.127.net/22c06cba5722e5fd0e9561cf5b7b1800.jpg" />
-        <div>
-          <span class="title">给毛孔来一次深度清洁</span>
-          <span class="subtitle">硅胶</span>
-        </div>
-        <span class="priceInfo">107元起</span>
+      <li v-for="(topic ,index) in homeData.topicList" :key="index">
+        <img :src="topic.itemPicUrl" />
+        <span class="title">{{topic.title}}</span>
+        <span class="subtitle">{{topic.subtitle}}</span>
+        <span class="priceInfo">{{topic.priceInfo}}元起</span>
       </li>
-      <li>
-        <img src="https://yanxuan.nosdn.127.net/acb59e68201beaaee839d42733332c26.jpg" />
-      </li>
-      <li>
-        <img src="https://yanxuan.nosdn.127.net/22c06cba5722e5fd0e9561cf5b7b1800.jpg" />
-      </li>
+
     </ul>
   </div>
 </template>
 
 <script>
+  import {mapState} from 'vuex'
+  import BScroll from 'better-scroll'
   export default {
-    name: "ProjectSelection"
+    computed : {
+      ...mapState(['homeData'])
+    },
+    watch : {
+      homeData () {
+        this.$nextTick(()=>{
+          new BScroll ('.project',{
+            scrollX : true,
+            click : true
+          })
+        })
+      }
+    }
   }
 </script>
 
@@ -36,19 +43,30 @@
       li
         height 4.09rem
         width 5.75rem
-        background: red
+        background: #F4F4F4
         margin-right 0.4rem
+        position relative
         img
           width 5.75rem
           height 3.19rem
         .title
           font-size 0.15rem
+          position absolute
+          left 0.3rem
+          top 3.4rem
         .subtitle
           font-size 0.14rem
+          position absolute
+          left 0.3rem
+          top 3.8rem
+          color grey
         .priceInfo
           font-size 0.14rem
-
-
+          position absolute
+          left 4.5rem
+          top 3.4rem
+          color red
+          font-weight bold
 
 
 </style>

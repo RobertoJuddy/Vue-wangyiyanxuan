@@ -14,32 +14,37 @@
         </ul>
       </div>
     </div>
-    <div class="main">
-      <Swiper />
-      <div class="serve">
-        <div class="serveItem" v-for="(police , index) in homeData.policyDescList" :key="index">
-          <img :src="police.icon" class="imgServe" />
-          <span>{{police.desc}}</span>
+    <div class="container">
+      <div class="main">
+        <Swiper />
+        <div class="serve">
+          <div class="serveItem" v-for="(police , index) in homeData.policyDescList" :key="index">
+            <img :src="police.icon" class="imgServe" />
+            <span>{{police.desc}}</span>
+          </div>
         </div>
-      </div>
-      <div class="split">
+        <div class="split">
+          <Split />
+          <DirectSupply />
+        </div>
+
+        <div class="firstPublish">
+          <div class="new">新品首发</div>
+          <button>查看全部</button>
+        </div>
+        <PublishSwiper />
+
+        <div class="m-site" v-if="homeData.saleIndexVO">
+          <img :src="homeData.saleIndexVO.picUrl"/>
+        </div>
         <Split />
-        <DirectSupply />
-      </div>
+        <ProjectSelection />
+        <MainScroll />
+        <MsiteFooter />
 
-      <div class="firstPublish">
-        <div class="new">新品首发</div>
-        <button>查看全部</button>
       </div>
-      <PublishSwiper />
-
-      <div class="m-site" v-if="homeData.saleIndexVO">
-        <img :src="homeData.saleIndexVO.picUrl"/>
-      </div>
-      <Split />
-      <ProjectSelection />
-
     </div>
+
   </div>
 </template>
 
@@ -50,6 +55,8 @@
   import PublishSwiper from '../../components/PublishSwiper/PublishSwiper'
   import {mapState} from 'vuex'
   import ProjectSelection from "../../components/ProjectSelection/ProjectSelection";
+  import MainScroll from "../../components/MainScroll/MainScroll";
+  import MsiteFooter from "../../components/MsiteFooter/MsiteFooter";
   export default {
     data () {
       return {
@@ -76,7 +83,7 @@
       ul.style.width = width
 
 
-      new BScroll ('.wrapper',{
+      new BScroll ('.container',{
         scrollX : true,
         click : true
       })
@@ -90,7 +97,18 @@
         this.currentIndex = index
       },
     },
+    watch : {
+      homeData () {
+        this.$nextTick(()=>{
+          new BScroll ('.wrap',{
+            click : true
+          })
+        })
+      }
+    },
     components: {
+      MsiteFooter,
+      MainScroll,
       ProjectSelection,
       Swiper,
       DirectSupply,
@@ -103,7 +121,7 @@
   @import '../../common/stylus/mixins.styl'
   .wrap
     width 100%
-    height 100%
+    height 13.34rem
     overflow hidden
     .header
       width 100%
@@ -175,61 +193,63 @@
 
 
 
-    .main
-      width 7.5rem
-      height 1000rem
-      position: relative
-      margin-top 1.5rem
-
-      .serve
-        width 100%
-        height 0.72rem
-        display flex
-        justify-content space-around
-        align-items center
-        .serveItem
-          width 2.27rem
-          height 0.36rem
-          .imgServe
-            width 0.32rem
-            height 0.32rem
-            float left
-          span
-            height 0.32rem
-            display block
-            font-size 0.14rem
-            margin-top 0.04rem
-
-
-
-      .firstPublish
+    .container
+      width 100%
+      height 100%
+      .main
         width 7.5rem
-        height 2.6rem
-        background: #F1F7FD
-        display flex
-        flex-direction column
-        justify-content space-around
-        align-items center
-        color #8BA0B6
-        .new
-          width 3.8rem
-          height 0.72rem
-          font-size 0.54rem
-          background #F1F7FD
-          text-align: center
-          margin-top 0.5rem
-        button
-          width 2.4rem
-          height 0.56rem
-          background: #D8E5F1
-          border none
-          outline none
-          margin-bottom 0.5rem
-
-      .m-site
-        width 7.5rem
-        height 3rem
-        img
+        position: relative
+        margin-top 1.5rem
+        padding-bottom 2rem
+        .serve
           width 100%
-          height 100%
+          height 0.72rem
+          display flex
+          justify-content space-around
+          align-items center
+          .serveItem
+            width 2.27rem
+            height 0.36rem
+            .imgServe
+              width 0.32rem
+              height 0.32rem
+              float left
+            span
+              height 0.32rem
+              display block
+              font-size 0.14rem
+              margin-top 0.04rem
+
+
+
+        .firstPublish
+          width 7.5rem
+          height 2.6rem
+          background: #F1F7FD
+          display flex
+          flex-direction column
+          justify-content space-around
+          align-items center
+          color #8BA0B6
+          .new
+            width 3.8rem
+            height 0.72rem
+            font-size 0.54rem
+            background #F1F7FD
+            text-align: center
+            margin-top 0.5rem
+          button
+            width 2.4rem
+            height 0.56rem
+            background: #D8E5F1
+            border none
+            outline none
+            margin-bottom 0.5rem
+
+        .m-site
+          width 7.5rem
+          height 3rem
+          img
+            width 100%
+            height 100%
 </style>

@@ -5,6 +5,7 @@ import ShadowMatic from '../pages/ShadowMatic/ShadowMatic'
 import Category from '../pages/Category/Category'
 import CartShop from '../pages/CartShop/CartShop'
 import Personal from '../pages/Personal/Personal'
+import Interlayer from '../pages/Interlayer/Interlayer'
 
 
 Vue.use(Router)
@@ -13,27 +14,47 @@ export default new Router({
   routes: [
     {
       path: '/msite',
-      component:  Msite
+      component:  Msite,
+      meta : {
+        isShowFooter :true
+      }
     },
     {
       path : '/shadowmatic',
-      component: ShadowMatic
+      component: ShadowMatic,
+      meta : {
+        isShowFooter :true
+      }
     },
     {
       path: '/category',
-      component : Category
+      component : Category,
+      meta : {
+        isShowFooter :true
+      }
     },
     {
       path : '/cartshop',
-      component : CartShop
+      component : CartShop,
+      meta : {
+        isShowFooter :true
+      }
     },
     {
       path : '/personal',
-      component: Personal
+      component: Personal,
+      meta : {
+        isShowFooter :true
+      }
+    },
+    {
+      path : '/interlayer',
+      component : Interlayer
     },
     {
       path : '/',
-      redirect : '/msite'
+      redirect : '/interlayer'
     }
   ]
+
 })

@@ -1,7 +1,7 @@
 <template>
   <div>
     <router-view />
-    <FooterTotal />
+    <FooterTotal v-if="$route.meta.isShowFooter"/>
   </div>
 </template>
 
