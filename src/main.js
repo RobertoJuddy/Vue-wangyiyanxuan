@@ -4,12 +4,17 @@ import router from './router'
 import store from './store'
 import './mock/mockServer'
 import Split from './components/Split/Split'
+import CommonHeader from './components/CommonHeader/CommonHeader'
 Vue.config.productionTip = false
 
 Vue.component('Split',Split)
-new Vue({
-  el:'#app',
-  render: h=>h(App),
-  router,
-  store
-})
+Vue.component('CommonHeader',CommonHeader)
+
+  new Vue({
+    el:'#app',
+    render: h=>h(App),
+    router,
+    store
+  })
+
+

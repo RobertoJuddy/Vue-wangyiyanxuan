@@ -1,7 +1,8 @@
 <template>
   <div class="split">
-    <span class="text">品牌制造商直供</span>
-    <span class="icon"><i class="iconfont icon-right"></i></span>
+    <slot name="left"></slot>
+    <slot name="right"></slot>
+
   </div>
 </template>
 

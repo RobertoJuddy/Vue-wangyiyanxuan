@@ -10,6 +10,10 @@
 export default {
   components : {
     FooterTotal
+  },
+  mounted () {
+    this.$store.dispatch('getHomeData')
+    this.$store.dispatch('getDataNav')
   }
 
 }

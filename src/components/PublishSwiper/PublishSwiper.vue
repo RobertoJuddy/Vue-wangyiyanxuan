@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="PublishContainer">
     <ul class="containerList">
       <li v-for="(newItem , index) in homeData.newItemList" :key="index">
         <img :src="newItem.primaryPicUrl" />
@@ -17,21 +17,25 @@
   import BScroll from 'better-scroll'
   import {mapState} from 'vuex'
   export default {
-    mounted (){
-      new BScroll ('.container',{
-        scrollX : true,
-        click : true
-      })
-    },
     computed : {
       ...mapState(['homeData'])
+    },
+    watch : {
+      homeData () {
+        this.$nextTick(()=>{
+          new BScroll ('.PublishContainer',{
+            scrollX : true,
+            click : true
+          })
+        })
+      }
     }
   }
 </script>
 
 <style scoped lang="stylus" rel="stylesheet/stylus">
   @import '../../common/stylus/mixins.styl'
-  .container
+  .PublishContainer
     width 100%
     display flex
     .containerList

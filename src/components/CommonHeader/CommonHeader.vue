@@ -1,0 +1,78 @@
+<template>
+  <header class="header">
+    <slot name="left"></slot>
+    <slot name="middle"></slot>
+    <slot name="search"></slot>
+    <slot name="caigou"></slot>
+  </header>
+</template>
+
+<script>
+  export default {
+    name: "CommonHeader"
+  }
+</script>
+
+<style scoped lang="stylus" rel="stylesheet/stylus">
+  @import '../../common/stylus/mixins.styl'
+  .header
+    width   7.5rem
+    height .8798rem
+    position: fixed
+    top 0
+    left: 0
+    z-index 3
+    background white
+    .icon-shouye
+      width 0.48rem
+      height 0.44rem
+      font-size 0.68rem
+      display block
+      position absolute
+      top 0.1rem
+      left 0.3rem
+    .headerText
+      background url("//yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/sprites/hd-s342878591a-9af1a97852.png")
+      position absolute
+      top 0
+      right 0
+      bottom 0
+      left 0
+      margin auto
+      width 2.29333rem
+      height 0.72rem
+      background-position: 0 -1.70667rem
+      display: inline-block
+      vertical-align: middle
+      background-repeat no-repeat
+      background-size 2.29333rem 5.30667rem
+    .icon-search
+      width 0.48rem
+      height 0.44rem
+      font-size 0.48rem
+      display block
+      position absolute
+      right 1.3rem
+      top 0.15rem
+    .icon-caigou
+      width 0.48rem
+      height 0.44rem
+      font-size 0.58rem
+      display block
+      position absolute
+      right 0.5rem
+      top 0.15rem
+    .shopping
+      position absolute
+      top 0
+      right 0
+      bottom 0
+      left 0
+      margin auto
+      width 2.29333rem
+      height 0.72rem
+      line-height 0.72rem
+      font-size 0.4rem
+      text-align: center
+
+</style>

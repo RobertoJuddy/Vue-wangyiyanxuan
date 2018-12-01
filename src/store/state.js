@@ -1,3 +1,5 @@
 export default {
-  homeData : {}
+  homeData : {},
+  dataTopic : {},
+  dataNav : {}
 }

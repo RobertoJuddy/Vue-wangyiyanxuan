@@ -12,9 +12,7 @@
 <script>
 
   export default {
-    mounted () {
-      this.$store.dispatch('getHomeData')
-    }
+
   }
 </script>
 
@@ -37,12 +35,12 @@
         height 3.27rem
     .footerImg
       width 7.5rem
-      height 4.32rem
+      height 3.72rem
     .maskTo
       width 3.38667rem
       height .4rem
-      left 3.14667rem
-      top 11.11rem
+      left 2.6rem
+      top 10.8rem
       position absolute
       display block
       font-size 0.16rem

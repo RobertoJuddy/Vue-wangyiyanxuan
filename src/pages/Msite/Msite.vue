@@ -1,5 +1,5 @@
 <template>
-  <div class="wrap">
+  <div class="wrap" >
     <div class="header">
       <div class="headerTop">
         <h2>网易严选</h2>
@@ -24,7 +24,10 @@
           </div>
         </div>
         <div class="split">
-          <Split />
+          <Split >
+            <span class="text" slot="left">品牌制造商直供</span>
+            <span class="icon" slot="right"><i class="iconfont icon-right"></i></span>
+          </Split>
           <DirectSupply />
         </div>
 
@@ -37,7 +40,10 @@
         <div class="m-site" v-if="homeData.saleIndexVO">
           <img :src="homeData.saleIndexVO.picUrl"/>
         </div>
-        <Split />
+        <Split >
+          <span class="text" slot="left">专题精选</span>
+          <span class="icon" slot="right"><i class="iconfont icon-right"></i></span>
+        </Split>
         <ProjectSelection />
         <MainScroll />
         <MsiteFooter />
@@ -83,10 +89,10 @@
       ul.style.width = width
 
 
-      new BScroll ('.container',{
-        scrollX : true,
-        click : true
-      })
+      //  new BScroll ('.wrapper',{
+      //   scrollX : true,
+      //   click : true
+      // })
 
     },
     computed: {
@@ -100,7 +106,13 @@
     watch : {
       homeData () {
         this.$nextTick(()=>{
-          new BScroll ('.wrap',{
+            new BScroll ('.container',{
+              click : true
+            })
+        }),
+        this.$nextTick(()=>{
+          new BScroll ('.wrapper',{
+            scrollX : true,
             click : true
           })
         })

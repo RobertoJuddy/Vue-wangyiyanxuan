@@ -1,13 +1,83 @@
 <template>
-  <div>cartshop</div>
+  <div>
+    <CommonHeader>
+      <<div slot="middle" class="shopping">购物车</div>
+    </CommonHeader>
+    <div class="CartContainer">
+      <div class="serve">
+        <div class="serveItem" v-for="(police , index) in homeData.policyDescList" :key="index">
+          <img :src="police.icon" class="imgServe" />
+          <span>{{police.desc}}</span>
+        </div>
+      </div>
+      <div class="cartImg"></div>
+      <div class="login">登录</div>
+    </div>
+  </div>
 </template>
 
 <script>
+import {mapState} from 'vuex'
+
   export default {
-    name: "CartShop"
+    computed : {
+      ...mapState(['homeData'])
+    }
   }
 </script>
 
-<style scoped>
+<style scoped lang="stylus" rel="stylesheet/stylus">
+  @import '../../common/stylus/mixins.styl'
+  .CartContainer
+    width 7.5rem
+    height 12.46rem
+    background #F4F4F4
+    position relative
+    .serve
+      width 100%
+      height 0.72rem
+      display flex
+      justify-content space-around
+      align-items center
+      .serveItem
+        width 2.27rem
+        height 0.36rem
+        .imgServe
+          width 0.32rem
+          height 0.32rem
+          float left
+        span
+          height 0.32rem
+          display block
+          font-size 0.14rem
+          margin-top 0.04rem
 
+
+
+    .cartImg
+      background-image url(//yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/noCart-a8fe3f12e5.png);
+      width 2.48rem
+      height 2.48rem
+      background-size 100% 100%
+      background-position center center
+      background-repeat no-repeat
+      position absolute
+      left 0
+      bottom 0
+      right 0
+      top 0
+      margin auto
+    .login
+      margin auto
+      width 5rem
+      height 1.22667rem
+      font-size .4rem
+      line-height 1.22667rem
+      color: #fff
+      background-color #b4282d
+      border-radius .04rem
+      text-align center
+      position absolute
+      top 8rem
+      left 1.3rem
 </style>
