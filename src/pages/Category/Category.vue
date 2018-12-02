@@ -8,16 +8,23 @@
       <div class="CategoryLeft">
         <CategoryList />
       </div>
-      <div class="CategoryRight"></div>
+      <div class="CategoryRight">
+        <CategoryRight :Info="dataNav.categoryList"/>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+  import {mapState} from 'vuex'
   import CategoryList from "../../components/CategoryList/CategoryList";
+  import CategoryRight from "../../components/CategoryRight/CategoryRight";
   export default {
-    name: "Category",
-    components: {CategoryList}
+    computed : {
+      ...mapState(['dataNav']),
+
+    },
+    components: {CategoryRight, CategoryList}
   }
 </script>
 
@@ -45,6 +52,12 @@
         position absolute
         left 1.5rem
         top 0.3rem
+    .CategoryMain
+      .CategoryLeft
+        float left
+      .CategoryRight
+        float right
+
 
 
 </style>

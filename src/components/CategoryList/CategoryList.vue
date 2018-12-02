@@ -1,7 +1,7 @@
 <template>
   <div class="Category">
     <ul class="CategoryList">
-      <li :class="{active : isShow === index}" v-for="(data, index) in dataNav.categoryL1List"
+      <li :class="{active : isShow === index}" v-for="(data, index) in dataNav.categoryList"
           :key="index"
           @click="changeIshow(index)"
       >{{data.name}}</li>
@@ -10,21 +10,25 @@
 </template>
 
 <script>
+  import Pubsub  from 'pubsub-js'
   import {mapState} from 'vuex'
   export default {
     data () {
       return {
-        isShow : 0
+        isShow : 0,
       }
     },
     computed : {
-      ...mapState(['dataNav'])
+      ...mapState(['dataNav','index'])
+
     },
     methods : {
       changeIshow (index) {
         this.isShow = index
+        Pubsub.publish('msg', index)
       }
     }
+
   }
 </script>
 
