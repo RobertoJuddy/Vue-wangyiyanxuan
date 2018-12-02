@@ -1,7 +1,7 @@
 <template>
   <div class="LoginForPhone">
     <CommonHeader>
-      <span slot="left"><i class="iconfont icon-shouye"></i></span>
+      <i class="iconfont icon-shouye" slot="left" @click="GoMsite"></i>
       <div slot="middle" class="headerText"></div>
       <span slot="search"><i class="iconfont icon-search"></i></span>
       <span slot="caigou"><i class="iconfont icon-caigou"></i></span>
@@ -10,40 +10,69 @@
       <div class="PersonalMainImgBox">
         <img src="//yanxuan.nosdn.127.net/bd139d2c42205f749cd4ab78fa3d6c60.png" />
         <div class="InputPhone">
-          <input type="text" placeholder="邮箱账号"/>
+          <input type="text" placeholder="邮箱账号" v-model="email"/>
         </div>
         <div class="Input">
-          <input type="password" placeholder="密码"/>
+          <input type="password" placeholder="密码" v-model="pwd"/>
         </div>
         <div class="InputProblem">
-          <input type="text" placeholder="注册账号"/>
+          <input type="text" placeholder="注册账号" v-model="account"/>
           <span class="authLogin">忘记密码</span>
         </div>
-        <div class="PersonalMainPhone" >
-          <span class="PhoneLogin" @click="Login">登录</span>
+        <div class="PersonalMainPhone" @click="Login" >
+          <span class="PhoneLogin" >登录</span>
         </div>
         <div class="PersonalMainEmail" @click="goLogin">
           <span class="EmailLogin">其他方式登录</span>
         </div>
-
       </div>
-
-
-
-
     </div>
   </div>
 </template>
 
 <script>
-
+  import {Toast, MessageBox} from 'mint-ui';
   export default {
     props : {
       switchToLogin : Function
     },
+    data () {
+      return {
+        email : '',
+        pwd : '' ,
+        account : ''
+
+      }
+    },
     methods : {
       goLogin () {
         this.switchToLogin()
+      },
+      Login () {
+        if(!this.email) {
+          Toast({
+            message: '请输入邮箱',
+            position: 'middle',
+            duration: 1000
+          });
+        }else if(!this.pwd) {
+          Toast({
+            message: '请输入密码',
+            position: 'middle',
+            duration: 1000
+          });
+        }else if(!this.account){
+          Toast({
+            message: '请输入注册账号',
+            position: 'middle',
+            duration: 1000
+          });
+        }else {
+          MessageBox.alert('登录成功')
+        }
+      },
+      GoMsite () {
+        this.$router.replace('/msite')
       }
     }
   }

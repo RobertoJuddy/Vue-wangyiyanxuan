@@ -2,7 +2,7 @@
   <div class="LoginAll">
     <div class="Login" v-if="isShow">
       <CommonHeader>
-        <span slot="left"><i class="iconfont icon-shouye"></i></span>
+        <i class="iconfont icon-shouye" slot="left" @click="GoMsite"></i>
         <div slot="middle" class="headerText"></div>
         <span slot="search"><i class="iconfont icon-search"></i></span>
         <span slot="caigou"><i class="iconfont icon-caigou"></i></span>
@@ -45,7 +45,7 @@
       </div>
     </div >
 
-    <LoginForPhone v-if="isPhone" :switchToLogin="switchToLogin"/>
+    <LoginForPhone v-if="isPhone" :switchToLoginFromPhone="switchToLoginFromPhone"/>
     <LoginForEmail v-if="isEmail" :switchToLogin="switchToLogin" />
   </div>
 
@@ -80,7 +80,15 @@
       switchToLogin () {
         this.isEmail = false
         this.isShow = true
+      },
+      switchToLoginFromPhone () {
+        this.isPhone = false
+        this.isShow = true
+      },
+      GoMsite () {
+        this.$router.replace('/msite')
       }
+
     }
   }
 </script>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="shadowMaticNews" v-for="(item ,index) in items.Item" :key="index" v-if="index>0 && items">
+    <div class="shadowMaticNews" v-for="(item ,index) in items.Item" :key="index" v-if="index>0">
       <div class="left">
         <div class="leftInfo">
           <img :src=item.avatar />

@@ -9,7 +9,7 @@
 
 <script>
   export default {
-    name: "CommonHeader"
+
   }
 </script>
 
@@ -25,8 +25,8 @@
     background #E9E9E9
     border 0.01rem solid #E9E9E9
     .icon-shouye
-      width 0.48rem
-      height 0.44rem
+      width 0.6rem
+      height 0.6rem
       font-size 0.68rem
       display block
       position absolute

@@ -1,7 +1,7 @@
 <template>
   <div class="app">
     <CommonHeader>
-        <span slot="left"><i class="iconfont icon-shouye"></i></span>
+        <i class="iconfont icon-shouye" slot="left" @click="GoMsite"></i>
         <div slot="middle" class="headerText"></div>
         <span slot="search"><i class="iconfont icon-search"></i></span>
         <span slot="caigou"><i class="iconfont icon-caigou"></i></span>
@@ -14,8 +14,8 @@
           <Split>
             <span class="text" slot="left">严选推荐</span>
           </Split>
-          <Recommend :data="dataTopic.recommend"/>
-          <ShadowMaticNews :items="dataTopic.recommend"/>
+          <Recommend :data="dataTopic.recommend" v-if="dataTopic.recommend"/>
+          <ShadowMaticNews :items="dataTopic.recommend" v-if="dataTopic.recommend"/>
         </div>
         <div>
           <Split>
@@ -27,7 +27,7 @@
           <Split>
             <span class="text" slot="left" style="left:-1.1rem">严选LOOk</span>
           </Split>
-          <ShadowLook :data="dataTopic.yxLook"/>
+          <ShadowLook :data="dataTopic.yxLook" v-if="dataTopic.yxLook"/>
         </div>
         <div>
           <Split>
@@ -76,6 +76,11 @@
          })
        })
      }
+    },
+    methods : {
+      GoMsite () {
+        this.$router.replace('/msite')
+      }
     }
   }
 </script>

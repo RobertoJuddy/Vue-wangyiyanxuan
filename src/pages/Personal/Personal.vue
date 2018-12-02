@@ -1,9 +1,9 @@
 <template>
   <div class="Personal">
     <CommonHeader>
-      <span slot="left"><i class="iconfont icon-shouye"></i></span>
+      <span slot="left"><i class="iconfont icon-shouye" @click="GoMsite"></i></span>
       <div slot="middle" class="headerText"></div>
-      <span slot="search"><i class="iconfont icon-search"></i></span>
+      <span  slot="search"><i class="iconfont icon-search"></i></span>
       <span slot="caigou"><i class="iconfont icon-caigou"></i></span>
     </CommonHeader>
   </div>
@@ -13,7 +13,11 @@
 <script>
 
   export default {
-    name: "Personal",
+   methods : {
+     GoMsite () {
+       this.$router.replace('/msite')
+     }
+   }
 
   }
 </script>

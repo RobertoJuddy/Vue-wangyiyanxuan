@@ -1,7 +1,7 @@
 <template>
   <div class="LoginForPhone">
     <CommonHeader>
-      <span slot="left"><i class="iconfont icon-shouye"></i></span>
+      <i class="iconfont icon-shouye" slot="left" @click="GoMsite"></i>
       <div slot="middle" class="headerText"></div>
       <span slot="search"><i class="iconfont icon-search"></i></span>
       <span slot="caigou"><i class="iconfont icon-caigou"></i></span>
@@ -13,8 +13,8 @@
           <input type="text" placeholder="请输入手机号" v-model="phone"/>
         </div>
         <div class="Input">
-          <input type="text" placeholder="请输入短信码验证" v-model="code" />
-          <span class="authCode" @click="getCode" >{{Time?msg:all}}</span>
+          <input type="text" placeholder="请输入短信码验证" v-model="code"  />
+          <span class="authCode" @click="getCode">{{Time?msg:all}}</span>
         </div>
         <div class="InputProblem">
           <input type="text" placeholder="遇到问题？" v-model="problem"/>
@@ -35,10 +35,10 @@
 </template>
 
 <script>
-  import {Toast} from 'mint-ui';
+  import {Toast, MessageBox} from 'mint-ui';
   export default {
     props : {
-      switchToLogin : Function
+      switchToLoginFromPhone : Function
     },
     data () {
       return {
@@ -47,39 +47,70 @@
         problem : '',
         msg : '请获取验证码',
         Time : true,
-        all : ''
+        all : '',
+        handle : true
       }
     },
     methods : {
       goLogin() {
-        this.switchToLogin()
+        this.switchToLoginFromPhone()
       },
       Login () {
+
         if(!this.phone) {
-          Toast('请输入电话号码')
+          Toast({
+            message: '请输入电话号码',
+            position: 'middle',
+            duration: 1000
+          });
         }else if(!this.code) {
-          alert('请输入验证码')
+          Toast({
+            message: '请输入验证码',
+            position: 'middle',
+            duration: 1000
+          });
         }else if(!this.problem){
-          alert('请输入问题')
+          Toast({
+            message: '请输入问题',
+            position: 'middle',
+            duration: 1000
+          });
         }else {
-          alert('登录成功')
+          MessageBox.alert('登录成功')
         }
       },
       getCode () {
-        this.Time = false
-        let time = 30
-        this.all= `${time}s`
-        let timer = setInterval(()=>{
-          time--
-          if(time<=0){
-            time=0
-            clearInterval(timer)
-            this.Time = true
-          }
-          this.all = `${time}s`
-        },1000)
+        if(!this.isRightPhone){
+          MessageBox.alert('请输入正确手机号')
+          return
+        }
+        if(this.handle) {
+          this.handle = false
+          this.Time = false
+          let time = 30
+          this.all= `${time}s`
+          let timer = setInterval(()=>{
+            time--
+            if(time<=0){
+              time=0
+              clearInterval(timer)
+              this.Time = true
+              this.handle = true
+            }
+            this.all = `${time}s`
+          },1000)
+        }
+
+      },
+      GoMsite () {
+        this.$router.replace('/msite')
       }
-    }
+    },
+    computed: {
+      isRightPhone () {
+        return /^1\d{10}$/.test(this.phone)
+      }
+    },
   }
 </script>
 
