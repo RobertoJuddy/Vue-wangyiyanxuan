@@ -10,7 +10,6 @@
       <span class="nickDescript">{{data.Item[0].subTitle}}</span>
     </div>
   </div>
-
 </template>
 
 <script>
@@ -66,4 +65,5 @@
       left 0.3rem
       bottom 0.05rem
       color grey
+
 </style>

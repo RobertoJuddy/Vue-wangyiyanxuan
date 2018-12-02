@@ -17,7 +17,7 @@
         <span class="iconfont icon-caigou"></span>
         <span class="footerText">购物车</span>
       </li>
-      <li @click="$router.replace('/personal')" :class="{active:$route.path === '/personal'}">
+      <li @click="$router.replace('/login')" :class="{active:$route.path === '/personal'}" >
         <span class="iconfont icon-yonghu"></span>
         <span class="footerText">个人中心</span>
       </li>

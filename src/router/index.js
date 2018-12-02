@@ -6,6 +6,7 @@ import Category from '../pages/Category/Category'
 import CartShop from '../pages/CartShop/CartShop'
 import Personal from '../pages/Personal/Personal'
 import Interlayer from '../pages/Interlayer/Interlayer'
+import Login from '../pages/Login/Login'
 
 
 Vue.use(Router)
@@ -50,6 +51,10 @@ export default new Router({
     {
       path : '/interlayer',
       component : Interlayer
+    },
+    {
+      path : '/login',
+      component : Login
     },
     {
       path : '/',

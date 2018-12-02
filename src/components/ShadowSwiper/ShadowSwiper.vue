@@ -27,7 +27,6 @@
               loop: true,
               slidesPerView : 'auto',
               centeredSlides : true,
-              spaceBetween : 8,
               autoplay : true
             })
         })
@@ -55,7 +54,7 @@
           position: absolute
           left 0
           right: 0
-          margin 0 auto
+          margin 0 -0.4rem
         .content
           width 4.65rem
           height 1.98rem

@@ -22,7 +22,8 @@
     top 0
     left: 0
     z-index 3
-    background white
+    background #E9E9E9
+    border 0.01rem solid #E9E9E9
     .icon-shouye
       width 0.48rem
       height 0.44rem

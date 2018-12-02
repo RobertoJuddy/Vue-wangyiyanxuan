@@ -1,6 +1,8 @@
 <template>
   <div>
-    <router-view />
+    <keep-alive>
+      <router-view />
+    </keep-alive>
     <FooterTotal v-if="$route.meta.isShowFooter"/>
   </div>
 </template>
@@ -23,4 +25,5 @@ export default {
   html{
     font-size:13.33333333vw !important
   }
+
 </style>

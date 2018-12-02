@@ -55,11 +55,11 @@
 </template>
 
 <script>
+  import {mapState} from 'vuex'
   import BScroll from 'better-scroll'
   import Swiper from "../../components/swiper/swiper";
   import DirectSupply from '../../components/DirectSupply/DirectSupply'
   import PublishSwiper from '../../components/PublishSwiper/PublishSwiper'
-  import {mapState} from 'vuex'
   import ProjectSelection from "../../components/ProjectSelection/ProjectSelection";
   import MainScroll from "../../components/MainScroll/MainScroll";
   import MsiteFooter from "../../components/MsiteFooter/MsiteFooter";
@@ -87,13 +87,6 @@
       const count = this.types.length
       const width = liWidth  * count  + 'px'
       ul.style.width = width
-
-
-      //  new BScroll ('.wrapper',{
-      //   scrollX : true,
-      //   click : true
-      // })
-
     },
     computed: {
       ...mapState(['homeData'])
