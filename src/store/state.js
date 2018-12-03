@@ -2,6 +2,7 @@ export default {
   homeData : {},
   dataTopic : {},
   dataNav : {},
-  userInfo : {}
+  userInfo : {},
+  local : {}
 
 }

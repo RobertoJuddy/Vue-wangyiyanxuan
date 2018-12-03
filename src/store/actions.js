@@ -2,12 +2,14 @@ import {
   RECEIVE_HOMEDATA,
   RECEIVE_DATATOPIC,
   RECEIVE_DATANAV,
-  RECEIVE_USERINFO
+  RECEIVE_USERINFO,
+  RECEIVE_LOCALSTORAGE
 } from './mutation-types'
 import {
   reqGetHomeData,
   reqDataTopic,
   reqGetDataNav,
+
 } from '../api'
 
 export default {
@@ -40,7 +42,12 @@ export default {
     }
 },
 
+
   saveUserInfo ({commit} , userInfo) {
     commit(RECEIVE_USERINFO , {userInfo})
+  },
+
+  localStorage ({commit}, local) {
+    commit (RECEIVE_LOCALSTORAGE, {local})
   }
 }

@@ -2,7 +2,8 @@ import {
   RECEIVE_HOMEDATA,
   RECEIVE_DATATOPIC,
   RECEIVE_DATANAV,
-  RECEIVE_USERINFO
+  RECEIVE_USERINFO,
+  RECEIVE_LOCALSTORAGE
 } from './mutation-types'
 
 export default {
@@ -17,5 +18,8 @@ export default {
   },
   [RECEIVE_USERINFO] (state , {userInfo}) {
     state.userInfo = userInfo
+  },
+  [RECEIVE_LOCALSTORAGE] (state , {local}) {
+    state.local = local
   }
 }

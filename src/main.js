@@ -13,7 +13,7 @@ Vue.component('Split',Split)
 Vue.component('CommonHeader',CommonHeader)
 Vue.component(Switch.name, Switch);
 
-import loading from './common/img/loading.gif'
+import loading from './common/img/loading1.gif'
 Vue.use(VueLazyload, {
   loading
 })

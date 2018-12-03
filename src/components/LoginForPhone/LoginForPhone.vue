@@ -16,10 +16,10 @@
           <input type="text" placeholder="请输入短信码验证" v-model="code"  />
           <span class="authCode" @click="getCode">{{Time?msg:all}}</span>
         </div>
-        <div class="InputCapcha" >
-          <input type="text" placeholder="验证码" v-model="captcha"/>
-          <img src="./images/captcha.svg" class="authLogin" @click="GetCapcha" ref="CapchaUl"/>
-        </div>
+        <!--<div class="InputCapcha" >-->
+          <!--<input type="text" placeholder="验证码" v-model="captcha"/>-->
+          <!--<img src="./images/captcha.svg" class="authLogin" @click="GetCapcha" ref="CapchaUl"/>-->
+        <!--</div>-->
         <div class="PersonalMainPhone" @click="Login">
           <span class="PhoneLogin" >登录</span>
         </div>
@@ -48,7 +48,7 @@
       return {
         phone : '',
         code : '',
-        captcha : '',
+        // captcha : '',
         msg : '请获取验证码',
         Time : true,
         all : '',
@@ -65,9 +65,8 @@
           MessageBox.alert('请输入电话号码')
         }else if(!this.code) {
           MessageBox.alert('请输入手机验证码')
-        }else if(!this.captcha){
-          MessageBox.alert('请输入验证码')
         }
+
 
 
         const {phone , code} = this
@@ -77,7 +76,7 @@
         const result = await reqLoginSms({phone, code})
         if(result.code === 0){
           this.$store.dispatch('saveUserInfo', result.data)
-
+          window.localStorage.setItem('loginInfo', JSON.stringify(result.data));
           this.$router.replace('/personal')
         }else {
           MessageBox.alert('登录失败')
@@ -119,18 +118,14 @@
       GoMsite () {
         this.$router.replace('/msite')
       },
-      GetCapcha () {
-        this.$refs.CapchaUl.src = `http://localhost:5000/captcha?Time=${Date.now()}`
-      }
+
     },
     computed: {
       isRightPhone () {
         return /^1\d{10}$/.test(this.phone)
       }
     },
-    mounted () {
-      this.GetCapcha ()
-    }
+
   }
 </script>
 
@@ -187,26 +182,10 @@
             width 1.7rem
             height 0.45rem
             line-height 0.4rem
-            border 0.06rem solid #848484
+            border 0.02rem solid #848484
             border-radius 15%
             font-size 0.14rem
-        .InputCapcha
-          width 6.7rem
-          height 0.9rem
-          margin-left 0.5rem
-          display flex
-          align-items center
-          input
-            width 5.9rem
-            height 0.42rem
-            font-size 0.3rem
-            border none
-            outline none
-            color grey
-          .authLogin
-            width 100%
-            height 100%
-            margin-top -0.3rem
+
         .PersonalMainPhone
           width 6.72rem
           height 0.95rem
@@ -264,9 +243,7 @@
 
 
 
-.is-placemiddle
-  position absolute
-  top 0
+
 
 
 

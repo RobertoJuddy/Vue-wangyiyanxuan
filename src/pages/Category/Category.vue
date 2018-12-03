@@ -10,7 +10,7 @@
       </div>
       <div class="CategoryScrollMain">
         <div class="CategoryRight">
-          <CategoryRight :Info="dataNav.categoryList"/>
+          <CategoryRight />
         </div>
       </div>
 
@@ -32,17 +32,21 @@
       CategoryRight,
       CategoryList
     },
-    watch : {
-      dataNav () {
-        this.$nextTick(()=>{
-            new BScroll('.CategoryScrollMain' , {
-              click : true
-            })
-          })
-
-
-        }
-      }
+    // watch : {
+    //   dataNav () {
+    //     this.$nextTick(()=>{
+    //       if(!this.BScroll){
+    //         this.BScroll = new BScroll('.CategoryScrollMain' , {
+    //           click : true
+    //         })
+    //       }else {
+    //         this.BScroll.refresh()
+    //       }
+    //
+    //       })
+    //
+    //     }
+    //   }
     }
 
 </script>

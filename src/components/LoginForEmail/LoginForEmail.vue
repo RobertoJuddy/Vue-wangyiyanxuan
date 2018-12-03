@@ -10,15 +10,15 @@
       <div class="PersonalMainImgBox">
         <img src="//yanxuan.nosdn.127.net/bd139d2c42205f749cd4ab78fa3d6c60.png" />
         <div class="InputPhone">
-          <input type="text" placeholder="邮箱/账号" v-model="email"/>
+          <input type="text" placeholder="邮箱/账号" v-model="name"/>
         </div>
         <div class="Input">
           <input :type="value?'text':'password'" placeholder="密码" v-model="pwd"/>
           <mt-switch v-model="value" @click="ShowOrNo"></mt-switch>
         </div>
-        <div class="InputProblem">
-          <input type="password" placeholder="再次输入密码" v-model="account"/>
-          <span class="authLogin">忘记密码</span>
+        <div class="InputCapcha" >
+          <input type="text" placeholder="验证码" v-model="captcha"/>
+          <img src="./images/captcha.svg" class="authLogin" @click="GetCapcha" ref="CapchaUl"/>
         </div>
         <div class="PersonalMainPhone" @click="Login" >
           <span class="PhoneLogin" >登录</span>
@@ -34,15 +34,16 @@
 <script>
 
   import {Toast, MessageBox} from 'mint-ui';
+  import {reqLoginPwd} from '../../api'
   export default {
     props : {
       switchToLogin : Function
     },
     data () {
       return {
-        email : '',
+        name : '',
         pwd : '' ,
-        account : '',
+        captcha : '',
         value : false
       }
     },
@@ -50,35 +51,42 @@
       goLogin () {
         this.switchToLogin()
       },
-      Login () {
-        if(!this.email) {
-          Toast({
-            message: '请输入邮箱或账号',
-            position: 'middle',
-            duration: 1000
-          });
+     async Login () {
+        if(!this.name) {
+          MessageBox.alert('请输入邮箱或账号')
         }else if(!this.pwd) {
-          Toast({
-            message: '请输入密码',
-            position: 'middle',
-            duration: 1000
-          });
-        }else if(!this.account){
-          Toast({
-            message: '请输入注册账号',
-            position: 'middle',
-            duration: 1000
-          });
-        }else {
-          MessageBox.alert('登录成功')
+          MessageBox.alert('请输入密码')
+        }else if(!this.captcha){
+          MessageBox.alert('请输入验证码')
         }
+
+
+        const {name ,pwd, captcha} = this
+       if(!name || !pwd || !captcha){
+            return
+       }
+        const result = await reqLoginPwd({name , pwd ,captcha})
+         if(result.code === 0 ) {
+           this.$store.dispatch('saveUserInfo' ,result.data)
+
+           window.localStorage.setItem('loginInfo', JSON.stringify(result.data))
+           this.$router.replace('/personal')
+         }else {
+           MessageBox.alert('登录失败')
+         }
       },
       GoMsite () {
         this.$router.replace('/msite')
       },
       ShowOrNo () {
-        this.isShow = true
+        this.value = !this.value
+      },
+      GetCapcha () {
+        this.$refs.CapchaUl.src = `http://localhost:5000/captcha?Time=${Date.now()}`
       }
+    },
+    mounted () {
+      this.GetCapcha ()
     }
   }
 </script>
@@ -139,6 +147,23 @@
             border 0.06rem solid #848484
             border-radius 15%
             font-size 0.14rem
+        .InputCapcha
+          width 6.7rem
+          height 0.9rem
+          margin-left 0.5rem
+          display flex
+          align-items center
+          input
+            width 5.9rem
+            height 0.42rem
+            font-size 0.3rem
+            border none
+            outline none
+            color grey
+          .authLogin
+            width 100%
+            height 100%
+            margin-top -0.3rem
         .InputProblem
           width 6.7rem
           height 0.9rem

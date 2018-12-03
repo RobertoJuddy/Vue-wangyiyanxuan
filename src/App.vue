@@ -3,6 +3,7 @@
     <keep-alive>
       <router-view />
     </keep-alive>
+
     <FooterTotal v-if="$route.meta.isShowFooter"/>
   </div>
 </template>
@@ -16,7 +17,14 @@ export default {
   mounted () {
     this.$store.dispatch('getHomeData')
     this.$store.dispatch('getDataNav')
-  }
+  },
+
+  beforeMount(){
+    let local = JSON.parse(window.localStorage.getItem('loginInfo'))
+    console.log(local)
+    this.$store.dispatch('localStorage' ,local)
+  },
+
 
 }
 </script>

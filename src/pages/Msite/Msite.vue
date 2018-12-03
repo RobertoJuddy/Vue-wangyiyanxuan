@@ -87,6 +87,8 @@
       const count = this.types.length
       const width = liWidth  * count  + 'px'
       ul.style.width = width
+
+
     },
     computed: {
       ...mapState(['homeData'])
