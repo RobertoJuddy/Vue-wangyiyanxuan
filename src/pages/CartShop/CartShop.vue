@@ -6,7 +6,7 @@
     <div class="CartContainer">
       <div class="serve">
         <div class="serveItem" v-for="(police , index) in homeData.policyDescList" :key="index">
-          <img :src="police.icon" class="imgServe" />
+          <img v-lazy="police.icon" class="imgServe" />
           <span>{{police.desc}}</span>
         </div>
       </div>

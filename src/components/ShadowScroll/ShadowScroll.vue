@@ -2,7 +2,7 @@
   <div class="shadowScrollContainer">
     <ul class="shadowScrollList">
       <li v-for="(item ,index) in dataTopic.column" :key="index">
-        <img :src=item.picUrl>
+        <img v-lazy=item.picUrl>
         <span class="shadowScrollText">{{item.title}}</span>
         <span class="shadowTopText">{{item.articleCount}}</span>
       </li>

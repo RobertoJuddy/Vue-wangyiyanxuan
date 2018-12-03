@@ -2,7 +2,7 @@
   <div>
     <div class="MoreSplended" v-for="(item, index) in dataTopic.yxWeek" :key="index">
       <div class="MoreSplendedImg">
-        <img :src=item.itemPicUrl />
+        <img v-lazy=item.itemPicUrl />
         <div class="MoreSplendedText">
           <span>{{item.subTitle}}</span>
         </div>

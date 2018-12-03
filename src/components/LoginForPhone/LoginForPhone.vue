@@ -16,9 +16,9 @@
           <input type="text" placeholder="请输入短信码验证" v-model="code"  />
           <span class="authCode" @click="getCode">{{Time?msg:all}}</span>
         </div>
-        <div class="InputProblem">
-          <input type="text" placeholder="遇到问题？" v-model="problem"/>
-          <span class="authLogin">使用验证码登录</span>
+        <div class="InputCapcha" >
+          <input type="text" placeholder="验证码" v-model="captcha"/>
+          <img src="./images/captcha.svg" class="authLogin" @click="GetCapcha" ref="CapchaUl"/>
         </div>
         <div class="PersonalMainPhone" @click="Login">
           <span class="PhoneLogin" >登录</span>
@@ -44,7 +44,7 @@
       return {
         phone : '',
         code : '',
-        problem : '',
+        captcha : '',
         msg : '请获取验证码',
         Time : true,
         all : '',
@@ -69,9 +69,9 @@
             position: 'middle',
             duration: 1000
           });
-        }else if(!this.problem){
+        }else if(!this.captcha){
           Toast({
-            message: '请输入问题',
+            message: '请输入验证码',
             position: 'middle',
             duration: 1000
           });
@@ -104,6 +104,9 @@
       },
       GoMsite () {
         this.$router.replace('/msite')
+      },
+      GetCapcha () {
+        this.$refs.CapchaUl.src = `http://localhost:5000/captcha?Time=${Date.now()}`
       }
     },
     computed: {
@@ -170,7 +173,7 @@
             border 0.06rem solid #848484
             border-radius 15%
             font-size 0.14rem
-        .InputProblem
+        .InputCapcha
           width 6.7rem
           height 0.9rem
           margin-left 0.5rem
@@ -184,10 +187,9 @@
             outline none
             color grey
           .authLogin
-            width 2.28rem
-            height 0.42rem
-            line-heigth 0.42rem
-            font-size 0.17rem
+            width 100%
+            height 100%
+            margin-top -0.3rem
         .PersonalMainPhone
           width 6.72rem
           height 0.95rem

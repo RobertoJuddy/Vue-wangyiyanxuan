@@ -10,13 +10,13 @@
       <div class="PersonalMainImgBox">
         <img src="//yanxuan.nosdn.127.net/bd139d2c42205f749cd4ab78fa3d6c60.png" />
         <div class="InputPhone">
-          <input type="text" placeholder="邮箱账号" v-model="email"/>
+          <input type="text" placeholder="邮箱/账号" v-model="email"/>
         </div>
         <div class="Input">
           <input type="password" placeholder="密码" v-model="pwd"/>
         </div>
         <div class="InputProblem">
-          <input type="text" placeholder="注册账号" v-model="account"/>
+          <input type="password" placeholder="再次输入密码" v-model="account"/>
           <span class="authLogin">忘记密码</span>
         </div>
         <div class="PersonalMainPhone" @click="Login" >
@@ -31,6 +31,7 @@
 </template>
 
 <script>
+
   import {Toast, MessageBox} from 'mint-ui';
   export default {
     props : {
@@ -51,7 +52,7 @@
       Login () {
         if(!this.email) {
           Toast({
-            message: '请输入邮箱',
+            message: '请输入邮箱或账号',
             position: 'middle',
             duration: 1000
           });

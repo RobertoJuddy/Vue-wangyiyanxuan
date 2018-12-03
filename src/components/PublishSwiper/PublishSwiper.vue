@@ -2,7 +2,7 @@
   <div class="PublishContainer">
     <ul class="containerList">
       <li v-for="(newItem , index) in homeData.newItemList" :key="index">
-        <img :src="newItem.primaryPicUrl" />
+        <img v-lazy="newItem.primaryPicUrl" />
         <span class="name">新品</span>
         <span class="much">{{newItem.name}}</span>
         <span class="type">{{newItem.simpleDesc}}</span>

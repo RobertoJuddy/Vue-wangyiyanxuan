@@ -2,7 +2,7 @@
   <div class="swiper-container">
     <div class="swiper-wrapper" >
       <div class="swiper-slide" v-for="(focus, index) in homeData.focusList" :key="index">
-        <img :src="focus.picUrl" />
+        <img v-lazy="focus.picUrl" />
       </div>
 
     </div>

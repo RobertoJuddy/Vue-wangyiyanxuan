@@ -4,7 +4,7 @@
      <h3 class="livingText">{{cate.name}}好物</h3>
      <ul class="livingList">
        <li v-for="(item , index) in cate.itemList" :key="index">
-         <img :src="item.primaryPicUrl" />
+         <img v-lazy="item.primaryPicUrl" />
          <span class="livingName">{{item.name}}</span>
          <span class="simpleDesc">{{item.simpleDesc}}</span>
          <span class="livingPrice">￥{{item.retailPrice}}</span>

@@ -2,7 +2,7 @@
   <div class="directSupply">
     <ul class="supplyList">
       <li class="one" v-for="(tag, index) in homeData.tagList" :key="index" v-if="index<=3">
-        <img :src="tag.picUrl"  class="supplyImg" />
+        <img v-lazy="tag.picUrl"  class="supplyImg" />
         <span class="tagName">{{tag.name}}</span>
         <span class="tagPrice">{{tag.floorPrice}}元起</span>
       </li>

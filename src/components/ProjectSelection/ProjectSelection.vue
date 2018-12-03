@@ -2,7 +2,7 @@
   <div class="project">
     <ul class="projectList">
       <li v-for="(topic ,index) in homeData.topicList" :key="index">
-        <img :src="topic.itemPicUrl" />
+        <img v-lazy="topic.itemPicUrl" />
         <span class="title">{{topic.title}}</span>
         <span class="subtitle">{{topic.subtitle}}</span>
         <span class="priceInfo">{{topic.priceInfo}}元起</span>

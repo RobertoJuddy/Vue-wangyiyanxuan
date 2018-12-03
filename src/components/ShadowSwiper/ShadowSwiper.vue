@@ -2,7 +2,7 @@
   <div class="swiper-container">
     <div class="swiper-wrapper">
       <div class="swiper-slide" v-for="(ban ,index) in dataTopic.banner" :key="index">
-        <img :src=ban.picUrl>
+        <img v-lazy=ban.picUrl>
         <div class="content">
           <span class="title">{{ban.subTitle}}</span>
           <span class="subTitle">{{ban.title}}</span>

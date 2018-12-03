@@ -17,11 +17,11 @@
         </div>
         <div class="PersonalMainPhone" @click="goPhone">
           <span class="PhoneIcon"><i class="iconfont icon-zhanghao"></i></span>
-          <span class="PhoneLogin">账号登录</span>
+          <span class="PhoneLogin">手机账号登录</span>
         </div>
         <div class="PersonalMainEmail" @click="goEmail">
           <span class="EmailIcon"><i class="iconfont icon-duanxin"></i></span>
-          <span class="EmailLogin">短信登录</span>
+          <span class="EmailLogin">邮箱或账号登录</span>
         </div>
         <div class="PersonalMainQuick">
           <span class="QuickPhone">手机快速账号注册 ></span>
@@ -137,6 +137,7 @@
             font-size 0.2rem
             color white
             text-align center
+            margin-left 0.2rem
           .PhoneIcon
             width 0.39rem
             height 0.39rem
@@ -164,6 +165,7 @@
             font-size 0.2rem
             color #B4282D
             text-align center
+            margin-left 0.4rem
           .EmailIcon
             width 0.39rem
             height 0.39rem

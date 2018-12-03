@@ -1,10 +1,10 @@
 <template>
   <div class="ShadowLook">
     <div class="ShadowLookImg">
-      <img :src=data.picUrl />
+      <img v-lazy=data.picUrl />
     </div>
     <div class="ShadowLookInfo">
-      <img :src=data.avatar />
+      <img v-lazy=data.avatar />
       <span class="ShadowLookText">{{data.content}}</span>
     </div>
 

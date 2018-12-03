@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="Recommend">
-      <img class="RecommendImg" :src=data.Item[0].picUrl />
+      <img class="RecommendImg" v-lazy=data.Item[0].picUrl />
       <span class="RecommendText">{{data.Item[0].typeName}}</span>
     </div>
     <div class="nickInfo" >

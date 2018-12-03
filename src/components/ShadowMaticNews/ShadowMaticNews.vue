@@ -3,14 +3,14 @@
     <div class="shadowMaticNews" v-for="(item ,index) in items.Item" :key="index" v-if="index>0">
       <div class="left">
         <div class="leftInfo">
-          <img :src=item.avatar />
+          <img v-lazy=item.avatar />
           <div class="name">{{item.nickname}}</div>
         </div>
         <div class="worldCup">{{item.title}}</div>
         <div class="discounts">{{item.subTitle}}</div>
       </div>
       <div class="right">
-        <img :src=item.picUrl />
+        <img v-lazy=item.picUrl />
         <span class="RecommendText">{{item.typeName}}</span>
       </div>
     </div>

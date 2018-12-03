@@ -5,11 +5,18 @@ import store from './store'
 import './mock/mockServer'
 import Split from './components/Split/Split'
 import CommonHeader from './components/CommonHeader/CommonHeader'
-
+import VueLazyload from 'vue-lazyload'
+import { Switch } from 'mint-ui';
 Vue.config.productionTip = false
 
 Vue.component('Split',Split)
 Vue.component('CommonHeader',CommonHeader)
+Vue.component(Switch.name, Switch);
+
+import loading from './common/img/loading.gif'
+Vue.use(VueLazyload, {
+  loading
+})
 
 
   new Vue({

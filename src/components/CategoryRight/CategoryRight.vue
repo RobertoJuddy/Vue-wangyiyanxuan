@@ -2,7 +2,7 @@
   <div class="CategoryScroll">
     <div class="CategoryRightInfo" v-for="(data, dataItem) in dataNav.categoryList" :key = dataItem v-if="dataItem === index">
       <div class="CategoryImg">
-        <img :src=data.bannerUrl />
+        <img v-lazy=data.bannerUrl />
       </div>
       <div class="CategoryText">
         <span class="recommend">{{data.name}}</span>
@@ -11,7 +11,7 @@
       <div class="CategoryMain">
         <ul class="CategoryMainList">
           <li v-for="(item, itemIndex) in data.subCateList" :key = itemIndex>
-            <img :src=item.wapBannerUrl />
+            <img v-lazy=item.wapBannerUrl />
             <span class="CategoryTitle">{{item.name}}</span>
           </li>
         </ul>
@@ -83,6 +83,7 @@
       width 5.28rem
       .CategoryMainList
         width 100%
+        margin-left -0.3rem
         li
           width 1.44rem
           height 2rem
@@ -90,6 +91,7 @@
           flex-direction column
           justify-content center
           float left
+          margin-right .3rem
           img
             width 1.44rem
             height 1.44rem
