@@ -8,9 +8,12 @@
       <div class="CategoryLeft">
         <CategoryList />
       </div>
-      <div class="CategoryRight">
-        <CategoryRight :Info="dataNav.categoryList"/>
+      <div class="CategoryScrollMain">
+        <div class="CategoryRight">
+          <CategoryRight :Info="dataNav.categoryList"/>
+        </div>
       </div>
+
     </div>
   </div>
 </template>
@@ -19,13 +22,29 @@
   import {mapState} from 'vuex'
   import CategoryList from "../../components/CategoryList/CategoryList";
   import CategoryRight from "../../components/CategoryRight/CategoryRight";
+  import BScroll from 'better-scroll'
   export default {
     computed : {
       ...mapState(['dataNav']),
 
     },
-    components: {CategoryRight, CategoryList}
-  }
+    components: {
+      CategoryRight,
+      CategoryList
+    },
+    watch : {
+      dataNav () {
+        this.$nextTick(()=>{
+            new BScroll('.CategoryScrollMain' , {
+              click : true
+            })
+          })
+
+
+        }
+      }
+    }
+
 </script>
 
 <style scoped lang="stylus" rel="stylesheet/stylus">
@@ -41,6 +60,8 @@
       justify-content center
       position relative
       border-bottom 0.03rem solid #EDEDED
+      background white
+      z-index 5
       input
         width 6.87rem
         height 0.51rem
@@ -55,8 +76,10 @@
     .CategoryMain
       .CategoryLeft
         float left
-      .CategoryRight
-        float right
+      .CategoryScrollMain
+        height 11.44rem
+        .CategoryRight
+          float right
 
 
 

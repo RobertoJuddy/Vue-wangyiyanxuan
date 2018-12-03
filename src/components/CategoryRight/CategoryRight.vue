@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div class="CategoryRight" v-for="(data, dataItem) in dataNav.categoryList" :key = dataItem v-if="dataItem === index">
+  <div class="CategoryScroll">
+    <div class="CategoryRightInfo" v-for="(data, dataItem) in dataNav.categoryList" :key = dataItem v-if="dataItem === index">
       <div class="CategoryImg">
         <img :src=data.bannerUrl />
       </div>
@@ -41,13 +41,18 @@
     },
     computed : {
       ...mapState(['dataNav']),
-    }
+    },
+
   }
 </script>
 
 <style scoped lang="stylus" rel="stylesheet/stylus">
   @import '../../common/stylus/mixins.styl'
-  .CategoryRight
+ .CategoryScroll
+   width 100%
+   /*height 6.75rem*/
+
+  .CategoryRightInfo
     width 5.28rem
     padding 0.3rem 0.3rem 0.21rem 0.3rem
     box-sizing border-box
@@ -80,7 +85,7 @@
         width 100%
         li
           width 1.44rem
-          height 2.99rem
+          height 2rem
           display flex
           flex-direction column
           justify-content center
