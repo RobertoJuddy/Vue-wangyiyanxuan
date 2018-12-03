@@ -13,7 +13,8 @@
           <input type="text" placeholder="邮箱/账号" v-model="email"/>
         </div>
         <div class="Input">
-          <input type="password" placeholder="密码" v-model="pwd"/>
+          <input :type="value?'text':'password'" placeholder="密码" v-model="pwd"/>
+          <mt-switch v-model="value" @click="ShowOrNo"></mt-switch>
         </div>
         <div class="InputProblem">
           <input type="password" placeholder="再次输入密码" v-model="account"/>
@@ -41,8 +42,8 @@
       return {
         email : '',
         pwd : '' ,
-        account : ''
-
+        account : '',
+        value : false
       }
     },
     methods : {
@@ -74,6 +75,9 @@
       },
       GoMsite () {
         this.$router.replace('/msite')
+      },
+      ShowOrNo () {
+        this.isShow = true
       }
     }
   }

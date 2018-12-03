@@ -35,6 +35,10 @@
 </template>
 
 <script>
+  import  {
+    reqSendCode,
+    reqLoginSms
+  }  from '../../api'
   import {Toast, MessageBox} from 'mint-ui';
   export default {
     props : {
@@ -55,31 +59,31 @@
       goLogin() {
         this.switchToLoginFromPhone()
       },
-      Login () {
+      async Login () {
 
         if(!this.phone) {
-          Toast({
-            message: '请输入电话号码',
-            position: 'middle',
-            duration: 1000
-          });
+          MessageBox.alert('请输入电话号码')
         }else if(!this.code) {
-          Toast({
-            message: '请输入验证码',
-            position: 'middle',
-            duration: 1000
-          });
+          MessageBox.alert('请输入手机验证码')
         }else if(!this.captcha){
-          Toast({
-            message: '请输入验证码',
-            position: 'middle',
-            duration: 1000
-          });
+          MessageBox.alert('请输入验证码')
+        }
+
+
+        const {phone , code} = this
+        if(!phone || !code){
+          return
+        }
+        const result = await reqLoginSms({phone, code})
+        if(result.code === 0){
+          this.$store.dispatch('saveUserInfo', result.data)
+
+          this.$router.replace('/personal')
         }else {
-          MessageBox.alert('登录成功')
+          MessageBox.alert('登录失败')
         }
       },
-      getCode () {
+      async getCode () {
         if(!this.isRightPhone){
           MessageBox.alert('请输入正确手机号')
           return
@@ -100,7 +104,17 @@
             this.all = `${time}s`
           },1000)
         }
-
+        const {phone} = this
+        const result = await reqSendCode(phone)
+        if(result.code === 0){
+          Toast({
+            message: '发送验证码成功',
+            position: 'middle',
+            duration: 1000
+          });
+        }else {
+          MessageBox.alert('发送验证码失败')
+        }
       },
       GoMsite () {
         this.$router.replace('/msite')
@@ -114,6 +128,9 @@
         return /^1\d{10}$/.test(this.phone)
       }
     },
+    mounted () {
+      this.GetCapcha ()
+    }
   }
 </script>
 

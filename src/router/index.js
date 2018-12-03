@@ -1,12 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Msite from '../pages/Msite/Msite'
-import ShadowMatic from '../pages/ShadowMatic/ShadowMatic'
-import Category from '../pages/Category/Category'
-import CartShop from '../pages/CartShop/CartShop'
-import Personal from '../pages/Personal/Personal'
-import Interlayer from '../pages/Interlayer/Interlayer'
-import Login from '../pages/Login/Login'
+const Msite = () => import('../pages/Msite/Msite.vue')
+const ShadowMatic = () => import('../pages/ShadowMatic/ShadowMatic.vue')
+const Category = () => import('../pages/Category/Category.vue')
+const CartShop = () => import('../pages/CartShop/CartShop.vue')
+const Personal = () => import('../pages/Personal/Personal.vue')
+const Interlayer = () => import('../pages/Interlayer/Interlayer.vue')
+const Login = () => import('../pages/Login/Login.vue')
 
 
 Vue.use(Router)

@@ -1,7 +1,8 @@
 import {
   RECEIVE_HOMEDATA,
   RECEIVE_DATATOPIC,
-  RECEIVE_DATANAV
+  RECEIVE_DATANAV,
+  RECEIVE_USERINFO
 } from './mutation-types'
 
 export default {
@@ -13,5 +14,8 @@ export default {
   },
   [RECEIVE_DATANAV] (state , {dataNav}) {
     state.dataNav = dataNav
+  },
+  [RECEIVE_USERINFO] (state , {userInfo}) {
+    state.userInfo = userInfo
   }
 }

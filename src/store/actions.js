@@ -1,12 +1,13 @@
 import {
   RECEIVE_HOMEDATA,
   RECEIVE_DATATOPIC,
-  RECEIVE_DATANAV
+  RECEIVE_DATANAV,
+  RECEIVE_USERINFO
 } from './mutation-types'
 import {
   reqGetHomeData,
   reqDataTopic,
-  reqGetDataNav
+  reqGetDataNav,
 } from '../api'
 
 export default {
@@ -33,8 +34,13 @@ export default {
     const result = await reqGetDataNav()
     if(result.code === 0){
       const dataNav = result.data
-      commit ( RECEIVE_DATANAV, {dataNav})
+      commit (RECEIVE_DATANAV, {dataNav})
+    }else {
+      alert('1')
     }
-  }
+},
 
+  saveUserInfo ({commit} , userInfo) {
+    commit(RECEIVE_USERINFO , {userInfo})
+  }
 }
