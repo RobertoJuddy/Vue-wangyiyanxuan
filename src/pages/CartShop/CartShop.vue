@@ -11,7 +11,7 @@
         </div>
       </div>
       <div class="cartImg"></div>
-      <div class="login">登录</div>
+      <div class="login" v-if="!local">登录</div>
     </div>
   </div>
 </template>
@@ -21,7 +21,7 @@ import {mapState} from 'vuex'
 
   export default {
     computed : {
-      ...mapState(['homeData'])
+      ...mapState(['homeData' ,'local','userInfo'])
     }
   }
 </script>

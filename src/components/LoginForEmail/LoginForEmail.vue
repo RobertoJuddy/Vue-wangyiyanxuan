@@ -34,11 +34,14 @@
 <script>
 
   import {Toast, MessageBox} from 'mint-ui';
+
   import {reqLoginPwd} from '../../api'
   export default {
     props : {
       switchToLogin : Function
     },
+
+
     data () {
       return {
         name : '',
@@ -47,6 +50,7 @@
         value : false
       }
     },
+
     methods : {
       goLogin () {
         this.switchToLogin()
@@ -61,22 +65,38 @@
         }
 
 
+
+
         const {name ,pwd, captcha} = this
        if(!name || !pwd || !captcha){
             return
        }
         const result = await reqLoginPwd({name , pwd ,captcha})
          if(result.code === 0 ) {
+           this.name = ''
+           this.pwd = ''
+           this.captcha = ''
+           this.GetCapcha()
            this.$store.dispatch('saveUserInfo' ,result.data)
 
-           window.localStorage.setItem('loginInfo', JSON.stringify(result.data))
-           this.$router.replace('/personal')
+          localStorage.setItem('loginInfo', JSON.stringify(result.data))
+
+          let local = localStorage.getItem('loginInfo')
+
+           console.log(local)
+          if(local){
+
+            console.log(local)
+            this.$store.dispatch('localStorage' ,local)
+            this.$router.replace('/personal')
+          }
          }else {
-           MessageBox.alert('登录失败')
+           MessageBox.alert(result.msg)
+           this.GetCapcha()
          }
       },
       GoMsite () {
-        this.$router.replace('/msite')
+        this.$router.replace('/msite/0')
       },
       ShowOrNo () {
         this.value = !this.value

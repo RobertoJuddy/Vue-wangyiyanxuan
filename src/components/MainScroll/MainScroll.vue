@@ -1,6 +1,6 @@
 <template>
  <div>
-   <div class="living" v-for="(cate ,index) in cateList" :key="index">
+   <div class="living" v-for="(cate ,index) in cateList" :key="index" v-if=" id === index ">
      <h3 class="livingText">{{cate.name}}好物</h3>
      <ul class="livingList">
        <li v-for="(item , index) in cate.itemList" :key="index">
@@ -12,16 +12,15 @@
      </ul>
    </div>
  </div>
-
 </template>
 
 <script>
-  import {mapGetters} from 'vuex'
+  import {mapGetters , mapState} from 'vuex'
   export default {
     computed : {
-      ...mapGetters(['cateList'])
-
-    }
+      ...mapGetters(['cateList']),
+      ...mapState(['id'])
+    },
   }
 </script>
 

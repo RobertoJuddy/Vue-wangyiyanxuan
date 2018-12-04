@@ -47,19 +47,14 @@
     watch : {
       dataNav () {
         this.$nextTick(()=>{
-          if(!this.BScroll){
-            this.BScroll = new BScroll('.MainCategory' , {
+             new BScroll('.MainCategory' , {
               click : true,
-              // bounce : false
+              bounce : false
             })
-          }else {
-            this.BScroll.refresh()
-          }
-
         })
-
       }
-    }
+    },
+    
 
   }
 </script>

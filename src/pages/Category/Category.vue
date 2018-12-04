@@ -35,13 +35,10 @@
     // watch : {
     //   dataNav () {
     //     this.$nextTick(()=>{
-    //       if(!this.BScroll){
-    //         this.BScroll = new BScroll('.CategoryScrollMain' , {
+    //
+    //         new BScroll('.CategoryScrollMain' , {
     //           click : true
     //         })
-    //       }else {
-    //         this.BScroll.refresh()
-    //       }
     //
     //       })
     //

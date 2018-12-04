@@ -65,7 +65,7 @@
       ShadowSwiper
     },
     computed : {
-      ...mapState(['dataTopic'])
+      ...mapState(['dataTopic','id'])
     },
     watch : {
      dataTopic () {
@@ -79,7 +79,7 @@
     },
     methods : {
       GoMsite () {
-        this.$router.replace('/msite')
+        this.$router.replace('/msite/0')
       }
     }
   }

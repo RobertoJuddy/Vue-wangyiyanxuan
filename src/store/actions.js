@@ -3,7 +3,9 @@ import {
   RECEIVE_DATATOPIC,
   RECEIVE_DATANAV,
   RECEIVE_USERINFO,
-  RECEIVE_LOCALSTORAGE
+  RECEIVE_LOCALSTORAGE,
+  RECEIVE_CLEARSTORAGE,
+  RECEIVE_ID
 } from './mutation-types'
 import {
   reqGetHomeData,
@@ -49,5 +51,11 @@ export default {
 
   localStorage ({commit}, local) {
     commit (RECEIVE_LOCALSTORAGE, {local})
+  },
+  clearLocal ({commit}) {
+    commit (RECEIVE_CLEARSTORAGE)
+  },
+  changeId ({commit} , index) {
+    commit(RECEIVE_ID, {index})
   }
 }

@@ -75,11 +75,23 @@
         }
         const result = await reqLoginSms({phone, code})
         if(result.code === 0){
+          this.phone = ''
+          this.code = ''
+          clearInterval(this.timer)
+          this.Time = true
           this.$store.dispatch('saveUserInfo', result.data)
-          window.localStorage.setItem('loginInfo', JSON.stringify(result.data));
-          this.$router.replace('/personal')
+           window.localStorage.setItem('loginInfo', JSON.stringify(result.data))
+          let local = localStorage.getItem('loginInfo')
+
+          console.log(local)
+          if(local){
+
+            console.log(local)
+            this.$store.dispatch('localStorage' ,local)
+            this.$router.replace('/personal')
+          }
         }else {
-          MessageBox.alert('登录失败')
+          MessageBox.alert(result.msg)
         }
       },
       async getCode () {
@@ -92,11 +104,11 @@
           this.Time = false
           let time = 30
           this.all= `${time}s`
-          let timer = setInterval(()=>{
+          this.timer = setInterval(()=>{
             time--
             if(time<=0){
               time=0
-              clearInterval(timer)
+              clearInterval(this.timer)
               this.Time = true
               this.handle = true
             }
@@ -116,7 +128,7 @@
         }
       },
       GoMsite () {
-        this.$router.replace('/msite')
+        this.$router.replace('/msite/0')
       },
 
     },

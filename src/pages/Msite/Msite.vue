@@ -8,7 +8,7 @@
       </div>
       <div class="wrapper" >
         <ul class="navList" ref="ulList">
-          <li @click="ChangeIsShow(index)" v-for="(type,index) in types" :key="index">
+          <li @click="ChangeIsShow(index)" v-for="(type,index) in types" :key="index" >
             <span class="navItem" :class="{active : currentIndex === index}">{{type.name}}</span>
           </li>
         </ul>
@@ -96,6 +96,12 @@
     methods:{
       ChangeIsShow(index){
         this.currentIndex = index
+
+        this.$route.params.id = index
+
+        this.$router.replace(`/msite/${index}`)
+
+        this.$store.dispatch('changeId' ,index)
       },
     },
     watch : {
@@ -145,21 +151,22 @@
         align-items center
         position relative
         h2
-          margin-left -0.1rem
+          margin-left -0.7rem
           font-weight bold
           font-size 0.36rem
         input
-          width 5.24rem
+          width 4rem
           height 0.6rem
           border-radius 0.3rem
-          padding-left 1.07rem
+          padding-left 0.5rem
           box-sizing border-box
           background #EDEDED
           font-size 0.24rem
+          margin-left -1.9rem
         .iconItem
           position: absolute
-          left 2.7rem
-          top -0.24rem
+          left 2.5rem
+          top -0.3rem
           .iconfont
             font-size 0.3rem
 

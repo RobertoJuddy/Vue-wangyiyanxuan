@@ -1,8 +1,8 @@
 <template>
-  <div class="LoginAll">
+  <div class="LoginAll" >
     <div class="Login" v-if="isShow">
       <CommonHeader>
-        <i class="iconfont icon-shouye" slot="left" @click="GoMsite"></i>
+        <i class="iconfont icon-shouye" slot="left" @click.prevent="GoMsite"></i>
         <div slot="middle" class="headerText"></div>
         <span slot="search"><i class="iconfont icon-search"></i></span>
         <span slot="caigou"><i class="iconfont icon-caigou"></i></span>
@@ -56,14 +56,33 @@
 <script>
   import LoginForPhone from "../../components/LoginForPhone/LoginForPhone";
   import LoginForEmail from "../../components/LoginForEmail/LoginForEmail";
+  import {mapState} from 'vuex'
   export default {
     data () {
       return {
         isShow : true,
         isPhone : false,
-        isEmail : false
+        isEmail : false,
       }
     },
+
+    beforeRouteEnter (to, from, next) {
+      let local = JSON.parse(window.localStorage.getItem('loginInfo'))
+      console.log(local)
+      next(component => {
+
+        if(to.path ==='/login'){
+          if(local){
+            next('/personal')
+          }
+        }
+
+          })
+    },
+    computed : {
+      ...mapState(['id'])
+    },
+
     components: {
       LoginForPhone,
       LoginForEmail
@@ -86,10 +105,19 @@
         this.isShow = true
       },
       GoMsite () {
-        this.$router.replace('/msite')
+        this.$router.replace('/msite/0')
       }
 
-    }
+    },
+    beforeMount(){
+     /* let local = JSON.parse(window.localStorage.getItem('loginInfo'))
+      if(local){
+        this.$store.dispatch('localStorage' ,local)
+        this.$router.replace('/personal')
+      }*/
+
+    },
+
   }
 </script>
 

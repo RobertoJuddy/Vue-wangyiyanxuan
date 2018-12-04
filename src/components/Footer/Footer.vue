@@ -1,7 +1,7 @@
 <template>
   <div class="footer">
     <ul class="footerList">
-      <li @click="$router.replace('/msite')" :class="{active:$route.path === '/msite'}">
+      <li @click="$router.replace(`/msite/${id}`)" :class="{active:$route.path === `/msite/${id}`}">
         <span class="iconfont icon-shouye"></span>
         <span class="footerText">首页</span>
       </li>
@@ -17,7 +17,7 @@
         <span class="iconfont icon-caigou"></span>
         <span class="footerText">购物车</span>
       </li>
-      <li @click="$router.replace(local._id?'/personal':'/login')" :class="{active:$route.path === '/personal'}" >
+      <li @click="$router.replace(local?'/personal':'/login')" :class="{active:$route.path === '/personal'}" >
         <span class="iconfont icon-yonghu"></span>
         <span class="footerText">个人中心</span>
       </li>
@@ -29,7 +29,10 @@
   import {mapState} from 'vuex'
   export default {
     computed : {
-      ...mapState(['userInfo','local'])
+      ...mapState(['userInfo','local']),
+      id () {
+        return this.$route.params.id
+      }
     },
   }
 </script>

@@ -3,6 +3,7 @@ export default {
   dataTopic : {},
   dataNav : {},
   userInfo : {},
-  local : {}
+  local : {},
+  id : 0
 
 }

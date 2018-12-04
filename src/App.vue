@@ -17,13 +17,14 @@ export default {
   mounted () {
     this.$store.dispatch('getHomeData')
     this.$store.dispatch('getDataNav')
+
+    const local = JSON.parse(window.localStorage.getItem('loginInfo'))
+    if(local){
+      this.$store.dispatch('saveUserInfo' ,local)
+    }
   },
 
-  beforeMount(){
-    let local = JSON.parse(window.localStorage.getItem('loginInfo'))
-    console.log(local)
-    this.$store.dispatch('localStorage' ,local)
-  },
+
 
 
 }

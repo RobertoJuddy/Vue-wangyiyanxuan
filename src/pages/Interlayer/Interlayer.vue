@@ -5,14 +5,16 @@
       <img class="app" src="//yanxuan.nosdn.127.net/143424244e87fb8eed45c6984c769a63.jpg" />
     </div>
     <img class="footerImg" src="//yanxuan.nosdn.127.net/06a2d444a39e1dfe621b7f0d317de7b4.jpg" />
-    <router-link class="maskTo" to="/msite" >继续使用触屏版浏览</router-link>
+    <router-link class="maskTo" to="/msite/0">继续使用触屏版浏览</router-link>
   </div>
 </template>
 
 <script>
-
+import {mapState} from 'vuex'
   export default {
-
+    computed : {
+      ...mapState(['id'])
+    }
   }
 </script>
 

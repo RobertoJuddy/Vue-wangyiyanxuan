@@ -1,7 +1,7 @@
 <template>
   <div class="directSupply">
     <ul class="supplyList">
-      <li class="one" v-for="(tag, index) in homeData.tagList" :key="index" v-if="index<=3">
+      <li class="one" v-for="(tag, index) in homeData.tagList" :key="index" v-if="index<=id*4+3 && index>(id-1)*4+3">
         <img v-lazy="tag.picUrl"  class="supplyImg" />
         <span class="tagName">{{tag.name}}</span>
         <span class="tagPrice">{{tag.floorPrice}}元起</span>
@@ -14,7 +14,7 @@
   import {mapState} from 'vuex'
   export default {
     computed: {
-      ...mapState(['homeData'])
+      ...mapState(['homeData','id'])
     },
   }
 </script>
