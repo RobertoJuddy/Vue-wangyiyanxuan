@@ -1,0 +1,83 @@
+.wrap {
+  width: 100%;
+  height: 13.34rem;
+  overflow: hidden;
+}
+.wrap .header {
+  width: 100%;
+  height: 1.5rem;
+  position: fixed;
+  background-color: #fff;
+  top: 0;
+  z-index: 10;
+/*头部导航*/
+}
+.wrap .header .headerTop {
+  width: 100%;
+  height: 0.9rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+}
+.wrap .header .headerTop h2 {
+  margin-left: -0.7rem;
+  font-weight: bold;
+  font-size: 0.36rem;
+}
+.wrap .header .headerTop input {
+  width: 4rem;
+  height: 0.6rem;
+  border-radius: 0.3rem;
+  padding-left: 0.5rem;
+  box-sizing: border-box;
+  background: #ededed;
+  font-size: 0.24rem;
+  margin-left: -1.9rem;
+}
+.wrap .header .headerTop .iconItem {
+  position: absolute;
+  left: 2.5rem;
+  top: -0.3rem;
+}
+.wrap .header .headerTop .iconItem .iconfont {
+  font-size: 0.3rem;
+}
+.wrap .header .wrapper {
+  width: 7.5rem;
+  height: 0.5rem;
+}
+.wrap .header .wrapper .navList {
+  width: 7.5rem;
+  height: 0.6rem;
+  display: flex;
+  align-items: flex-start;
+  padding: 0 0.1rem;
+}
+.wrap .header .wrapper .navList li {
+  width: 1.54rem;
+  height: 0.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.wrap .header .wrapper .navList li .navItem {
+  height: 0.6rem;
+  font-size: 0.14rem;
+  line-height: 0.6rem;
+  position: relative;
+  padding: 0 0.16rem;
+}
+.wrap .header .wrapper .navList li .navItem.active {
+  color: #f00;
+}
+.wrap .header .wrapper .navList li .navItem.active::after {
+  display: block;
+  content: "";
+  width: 100%;
+  height: 0.03rem;
+  position: absolute;
+  left: 0;
+  bottom: 0.1rem;
+  background: #f00;
+}

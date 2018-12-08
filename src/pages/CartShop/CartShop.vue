@@ -1,7 +1,7 @@
 <template>
   <div>
     <CommonHeader>
-      <<div slot="middle" class="shopping">购物车</div>
+      <div slot="middle" class="shopping">购物车</div>
     </CommonHeader>
     <div class="CartContainer">
       <div class="serve">

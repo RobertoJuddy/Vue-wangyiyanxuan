@@ -22,7 +22,8 @@
   import {mapState} from 'vuex'
   import CategoryList from "../../components/CategoryList/CategoryList";
   import CategoryRight from "../../components/CategoryRight/CategoryRight";
-  import BScroll from 'better-scroll'
+
+
   export default {
     computed : {
       ...mapState(['dataNav']),

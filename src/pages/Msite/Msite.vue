@@ -47,10 +47,9 @@
         <ProjectSelection />
         <MainScroll />
         <MsiteFooter />
-
       </div>
     </div>
-
+    <Goto :goToTop="goToTop"/>
   </div>
 </template>
 
@@ -63,6 +62,7 @@
   import ProjectSelection from "../../components/ProjectSelection/ProjectSelection";
   import MainScroll from "../../components/MainScroll/MainScroll";
   import MsiteFooter from "../../components/MsiteFooter/MsiteFooter";
+  import Goto from '../../components/Goto/Goto'
   export default {
     data () {
       return {
@@ -103,11 +103,14 @@
 
         this.$store.dispatch('changeId' ,index)
       },
+      goToTop () {
+        this.scroll.scrollTo(0,0,1000)
+      }
     },
     watch : {
       homeData () {
         this.$nextTick(()=>{
-            new BScroll ('.container',{
+           this.scroll = new BScroll ('.container',{
               click : true
             })
         }),
@@ -125,7 +128,8 @@
       ProjectSelection,
       Swiper,
       DirectSupply,
-      PublishSwiper
+      PublishSwiper,
+      Goto
     }
   }
 </script>
